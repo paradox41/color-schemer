@@ -1,0 +1,68 @@
+'#212A35':
+  scopes:
+    - background:
+        styles:
+          fontStyle:
+            - italic
+            - bold
+
+'#819090':
+  scopes:
+    - caret
+
+'#D5D2C3':
+  scopes:
+    - foreground
+
+'#3C434B':
+  scopes:
+    - selection
+
+'#848683':
+  scopes:
+    - comment
+
+'#2AA198':
+  scopes:
+    - string
+
+'#EA8661':
+  scopes:
+    - 'string.regexp'
+    - 'constant.character'
+    - 'constant.other'
+
+'#D9C28C':
+  scopes:
+    - 'constant.numeric'
+    - 'entity.name.class'
+    - 'entity.name.type.class'
+
+'#D5D2C3':
+  scopes:
+    - 'variable.language'
+    - 'variable.other'
+
+'#63BFBF':
+  scopes:
+    - 'storage'
+
+'#DEE2E3':
+  scopes:
+    - 'entity.name.function'
+
+'#859900':
+  scopes:
+    - 'punctuation.definition.variable'
+
+'#D30102':
+  scopes:
+    - 'punctuation.section.embedded.begin'
+    - 'punctuation.section.embedded.end'
+    - 'support.function.construct'
+    - 'keyword.other.new'
+
+'#EA8661':
+  scopes:
+    - 'constant.language'
+    - 'meta.preprocessor'
