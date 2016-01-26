@@ -1,10 +1,6 @@
 '#212A35':
   scopes:
-    - background:
-        styles:
-          fontStyle:
-            - italic
-            - bold
+    - background
 
 '#819090':
   scopes:
@@ -28,8 +24,12 @@
 
 '#EA8661':
   scopes:
-    - 'string.regexp'
-    - 'constant.character'
+    - 'string.regexp':
+        fontStyle:
+          - italic
+          - bold
+    - 'constant.character':
+        name: 'constant'
     - 'constant.other'
 
 '#D9C28C':
@@ -37,6 +37,10 @@
     - 'constant.numeric'
     - 'entity.name.class'
     - 'entity.name.type.class'
+    - 'variable.parameter'
+    - 'support.function.magic.python'
+    - 'support.type'
+    - 'support.class'
 
 '#D5D2C3':
   scopes:
@@ -46,6 +50,8 @@
 '#63BFBF':
   scopes:
     - 'storage'
+    - 'entity.name.tag'
+    - 'entity.other.attribute-name'
 
 '#DEE2E3':
   scopes:
@@ -61,8 +67,17 @@
     - 'punctuation.section.embedded.end'
     - 'support.function.construct'
     - 'keyword.other.new'
+    - 'punctuation.separator.continuation'
 
 '#EA8661':
   scopes:
     - 'constant.language'
     - 'meta.preprocessor'
+    - 'constant.character'
+    - 'constant.other'
+    - 'entity.other.inherited-class'
+
+'#93A1A1':
+  scopes:
+    - 'punctuation.definition.tag.begin'
+    - 'punctuation.definition.tag.end'
