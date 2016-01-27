@@ -15,12 +15,12 @@ export default function(file) {
           }
         };
       } else {
-        let index = _(scope).keys().first();
-        let {fontStyle, name} = scope[index];
+        let key = _(scope).keys().first();
+        let {fontStyle, name} = scope[key];
 
         return {
           name: name,
-          scope: index,
+          scope: key,
           settings: {
             fontStyle,
             foreground: hex
