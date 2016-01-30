@@ -4,12 +4,12 @@ import _ from 'lodash';
 export default function(file) {
   var content = YAML.load(file);
 
-  return _(content).map((val, hex) => {
+  var settings = _(content).map((val, hex) => {
     return _.map(val.scopes, (scope) => {
       if (_.isString(scope)) {
         return {
           name: null,
-          scope,
+          scope: scope,
           settings: {
             foreground: hex
           }
@@ -29,4 +29,9 @@ export default function(file) {
       }
     });
   }).flatten().value();
+
+  return {
+    name: _.get(content, 'name', null),
+    settings: settings
+  };
 }
