@@ -19,10 +19,10 @@ export default function(file) {
         let {fontStyle, name} = scope[key];
 
         return {
-          name: name,
+          name: name || null,
           scope: key,
           settings: {
-            fontStyle,
+            fontStyle: fontStyle || null,
             foreground: hex
           }
         };
