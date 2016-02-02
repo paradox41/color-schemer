@@ -1,21 +1,13 @@
 ---
 name: 'Dark Fusion'
+style: 'Dark'
 
-'#212A35':
-  scopes:
-    - background
-
-'#819090':
-  scopes:
-    - caret
-
-'#D5D2C3':
-  scopes:
-    - foreground
-
-'#3C434B':
-  scopes:
-    - selection
+background: '#212A35'
+caret: '#819090'
+foreground: '#D5D2C3'
+invisibles: '#93A1A1'
+lineHighlight: '#364353'
+selection: '#3C434B'
 
 '#848683':
   scopes:

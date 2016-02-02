@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>{{name}}</string>
+    <key>settings</key>
+    <array>
+        <dict>
+            <key>settings</key>
+            <dict>
+                <key>background</key>
+                <string>{{background}}</string>
+                <key>caret</key>
+                <string>{{caret}}</string>
+                <key>foreground</key>
+                <string>{{foreground}}</string>
+                <key>invisibles</key>
+                <string>{{invisibles}}</string>
+                <key>lineHighlight</key>
+                <string>{{lineHighlight}}</string>
+                <key>selection</key>
+                <string>{{selection}}</string>
+            </dict>
+        </dict>
+        {{#settings}}
+        <dict>
+            <key>name</key>
+            <string>{{name}}</string>
+            <key>scope</key>
+            <string>{{scope}}</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>{{settings.foreground}}</string>
+                <key>fontStyle</key>
+                <string>{{settings.fontStyle}}</string>
+            </dict>
+        </dict>
+        {{/settings}}
+    </array>
+    <key>uuid</key>
+    <string>{{uuid}}</string>
+    <key>colorSpaceName</key>
+    <string>sRGB</string>
+    <key>semanticClass</key>
+    <string>{{semanticClass}}</string>
+</dict>
+</plist>

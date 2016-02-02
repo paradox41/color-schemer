@@ -56,5 +56,9 @@
     "tape": "^4.4.0",
     "watch": "^0.17.1",
     "yamljs": "^0.2.4"
+  },
+  "dependencies": {
+    "mustache": "^2.2.1",
+    "node-uuid": "^1.4.7"
   }
 }
