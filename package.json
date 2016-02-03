@@ -7,6 +7,9 @@
     "bin/",
     "dist/"
   ],
+  "bin": {
+    "color-scheme-parser": "./bin"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src test",
@@ -49,6 +52,7 @@
     "dependency-check": "^2.5.1",
     "doctoc": "^0.15.0",
     "eslint": "^1.10.3",
+    "eslint-plugin-import": "^0.12.1",
     "isparta": "^4.0.0",
     "lodash": "^4.0.0",
     "rimraf": "^2.5.0",
@@ -58,6 +62,7 @@
     "yamljs": "^0.2.4"
   },
   "dependencies": {
+    "commander": "^2.9.0",
     "mustache": "^2.2.1",
     "node-uuid": "^1.4.7"
   }

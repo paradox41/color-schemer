@@ -7,8 +7,11 @@ import _ from 'lodash';
 import Mustache from 'mustache';
 import uuid from 'node-uuid';
 
-export function colorSchemeParser(file) {
+export function parse(file) {
   var content = YAML.load(file);
+  var themeName = _.get(content, 'name', '');
+  var style = _.get(content, 'style', 'light').toLowerCase();
+  var semanticClass = themeName.split(' ').join('_').toLowerCase();
 
   var settings = _(content).map((val, hex) => {
     return _.map(val.scopes, (scope) => {
@@ -36,12 +39,8 @@ export function colorSchemeParser(file) {
     });
   }).flatten().value();
 
-  var name = _.get(content, 'name', '');
-  var style = _.get(content, 'style', 'light').toLowerCase();
-  var semanticClass = name.split(' ').join('_').toLowerCase();
-
   return {
-    name: name,
+    name: themeName,
     background: _.get(content, 'background', ''),
     caret: _.get(content, 'caret', ''),
     foreground: _.get(content, 'foreground', ''),
@@ -54,8 +53,9 @@ export function colorSchemeParser(file) {
   };
 }
 
-export function renderSublime(context) {
+export function renderSublime(file) {
   let template = loadTemplate(path.resolve(__dirname + '/templates/sublime.mustache'));
+  let context = parse(file);
 
   return Mustache.render(template, context);
 }
