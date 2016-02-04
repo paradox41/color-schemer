@@ -54,7 +54,7 @@ export function parse(file) {
 }
 
 export function renderSublime(file) {
-  let template = loadTemplate(path.resolve(__dirname + '/templates/sublime.mustache'));
+  let template = loadTemplate(path.resolve('./src/templates/sublime.mustache'));
   let context = parse(file);
 
   return Mustache.render(template, context);
