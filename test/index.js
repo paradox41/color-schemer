@@ -1,16 +1,16 @@
 import {expect} from 'chai';
 
-import {colorSchemeParser} from '../src';
+import {parse} from '../src';
 
 var loadFixture = function(name) {
   return `${__dirname}/fixtures/${name}.yml`;
 };
 
-describe('colorSchemeParser', function() {
+describe('parse', function() {
   before(function () {
     let file = loadFixture('scheme');
 
-    this.context = colorSchemeParser(file);
+    this.context = parse(file);
   });
 
   it('should set the name correctly', function() {
