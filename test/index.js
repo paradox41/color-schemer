@@ -41,7 +41,19 @@ describe('parse', function() {
     expect(this.context.selection).to.equal('#3C434B');
   });
 
+  it('should should have a uuid', function() {
+    expect(this.context.uuid).to.be.a.string;
+  });
+
   it('should set the semanticClass correctly', function() {
     expect(this.context.semanticClass).to.equal('theme.dark.dark_fusion');
+  });
+
+  it('should have an array of settings', function() {
+    expect(this.context.settings).to.be.an.array;
+  });
+
+  it('should have the correct number of scopes', function() {
+    expect(this.context.settings.length).to.equal(31);
   });
 });
