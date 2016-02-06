@@ -26,6 +26,11 @@ selection: '#3C434B'
     - 'constant.character':
         name: 'constant'
     - 'constant.other'
+    - 'constant.language'
+    - 'meta.preprocessor'
+    - 'constant.character'
+    - 'constant.other'
+    - 'entity.other.inherited-class'
 
 '#D9C28C':
   scopes:
@@ -63,14 +68,6 @@ selection: '#3C434B'
     - 'support.function.construct'
     - 'keyword.other.new'
     - 'punctuation.separator.continuation'
-
-'#EA8661':
-  scopes:
-    - 'constant.language'
-    - 'meta.preprocessor'
-    - 'constant.character'
-    - 'constant.other'
-    - 'entity.other.inherited-class'
 
 '#93A1A1':
   scopes:
