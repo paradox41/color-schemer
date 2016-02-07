@@ -37,7 +37,6 @@
         - 2
         - 'property'
     no-caller: 2
-    no-case-declarations: 2
     no-empty-label: 2
     no-magic-numbers: 2
     no-multi-str: 2
