@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import {parse} from '../src';
+import {parse, renderSublime} from '../src';
 
 var loadFixture = function(name) {
   return `${__dirname}/fixtures/${name}.yml`;
@@ -55,5 +55,15 @@ describe('parse', function() {
 
   it('should have the correct number of scopes', function() {
     expect(this.context.settings.length).to.equal(31);
+  });
+});
+
+describe('renderSublime', function() {
+  before(function () {
+    this.file = loadFixture('scheme');
+  });
+
+  it('should not throw an error', function() {
+    expect(() => renderSublime(this.file)).to.not.throw;
   });
 });
