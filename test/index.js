@@ -1,6 +1,11 @@
-import {expect} from 'chai';
+import chai, {expect} from 'chai';
+import spies from 'chai-spies';
+
+import Mustache from 'mustache';
 
 import {parse, renderSublime} from '../src';
+
+chai.use(spies);
 
 var loadFixture = function(name) {
   return `${__dirname}/fixtures/${name}.yml`;
@@ -63,7 +68,19 @@ describe('renderSublime', function() {
     this.file = loadFixture('scheme');
   });
 
-  it('should not throw an error', function() {
+  it('should throw an error if no file was provided', function() {
+    expect(() => renderSublime()).to.throw(Error);
+  });
+
+  it('should not throw an error if a file was provided', function() {
     expect(() => renderSublime(this.file)).to.not.throw;
+  });
+
+  it('should call Mustache.render', function() {
+    chai.spy.on(Mustache, 'render');
+
+    renderSublime(this.file);
+
+    expect(Mustache.render).to.have.been.called.once;
   });
 });
