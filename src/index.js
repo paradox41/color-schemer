@@ -55,7 +55,7 @@ export function parse(file) {
 
 export function renderSublime(file) {
   if (!file) {
-    throw Error('No file provided');
+    throw new Error('No file provided');
   }
 
   let template = loadTemplate(path.resolve('./src/templates/sublime.mustache'));
