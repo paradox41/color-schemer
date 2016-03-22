@@ -8,7 +8,7 @@
     "dist/"
   ],
   "bin": {
-    "color-scheme-parser": "./bin"
+    "color-scheme-parser": "./bin/index.js"
   },
   "scripts": {
     "clean": "rimraf dist",
