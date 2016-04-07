@@ -7,6 +7,11 @@ import _ from 'lodash';
 import Mustache from 'mustache';
 import uuid from 'node-uuid';
 
+/**
+ * Parse a YAML color scheme file into JSON
+ * @param  {String} file Path to the YAML file
+ * @return {Object} The parsed JSON
+ */
 export function parse(file) {
   var content = YAML.load(file);
   var themeName = _.get(content, 'name', '');
@@ -53,6 +58,11 @@ export function parse(file) {
   };
 }
 
+/**
+ * Outputs a .tmTheme file to stdout
+ * @param  {String} file Path to the YAML file
+ * @return {String} The .tmTheme file
+ */
 export function renderSublime(file) {
   if (!file) {
     throw new Error('No file provided');
@@ -65,12 +75,21 @@ export function renderSublime(file) {
 }
 
 /**
- * Helpers
+ * @private
+ * Generate a name for the scope if none is provided
+ * @param  {String} scope The scope
+ * @return {String} The transformed scope
  */
 function makeName(scope) {
   return scope.split('.').map(_.upperFirst).join(' ');
 }
 
+/**
+ * @private
+ * Thin wrapper around readFileSync. Will read all files as utf-8
+ * @param  {String} template Path to template
+ * @return {String} The file as a string
+ */
 function loadTemplate(template) {
   return fs.readFileSync(template, 'utf-8');
 }

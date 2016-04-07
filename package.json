@@ -28,7 +28,8 @@
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
     "postpublish": "git push origin master --follow-tags",
-    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md"
+    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
+    "docs": "documentation build ./src/index.js --format html --output ./docs"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "chai-spies": "^0.7.1",
     "coveralls": "^2.11.6",
     "doctoc": "^0.15.0",
+    "documentation": "^4.0.0-beta2",
     "eslint": "^1.10.3",
     "eslint-plugin-import": "^0.12.1",
     "isparta": "^4.0.0",
