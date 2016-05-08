@@ -6,13 +6,9 @@ import yaml from 'js-yaml';
 import uuid from 'node-uuid';
 import Mustache from 'mustache';
 
-class Parser {
-  constructor(file) {
-    if (!file) {
-      throw new Error('No file provided. Please provide the path to a yaml file.');
-    }
-
-    this._fromYaml = yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
+export default class ColorSchemeConverter {
+  constructor(scheme) {
+    this.scheme = scheme;
 
     return this;
   }
@@ -25,7 +21,7 @@ class Parser {
   }
 
   toJSON() {
-    const content = this._fromYaml;
+    const content = this.scheme;
 
     const themeName = _.get(content, 'name', '');
     const style = _.get(content, 'style', 'light').toLowerCase();
@@ -71,6 +67,10 @@ class Parser {
     };
   }
 
+  fromYAML(file) {
+    this._fromYaml = yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
+  }
+
   _makeName(scope) {
     return scope.split('.').map(_.upperFirst).join(' ');
   }
@@ -79,5 +79,3 @@ class Parser {
     return fs.readFileSync(template, 'utf-8');
   }
 }
-
-export default Parser;

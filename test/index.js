@@ -1,9 +1,12 @@
+import fs from 'fs';
+
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
 import Mustache from 'mustache';
+import yaml from 'js-yaml';
 
-import Parser from '../src';
+import ColorSchemeConverter from '../src';
 
 chai.use(spies);
 
@@ -11,12 +14,16 @@ const getFixturePath = function(name) {
   return `${__dirname}/fixtures/${name}.yml`;
 };
 
-describe('Parser', function() {
+describe('ColorSchemeConverter', function() {
+  before(function () {
+    const file = getFixturePath('scheme');
+
+    this.scheme = yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
+  });
+
   describe('#toJSON', function() {
     before(function() {
-      const file = getFixturePath('scheme');
-
-      this.result = new Parser(file).toJSON();
+      this.result = new ColorSchemeConverter(this.scheme).toJSON();
     });
 
     it('should set the name correctly', function() {
@@ -67,14 +74,10 @@ describe('Parser', function() {
   });
 
   describe('#toSublime', function() {
-    before(function() {
-      this.file = getFixturePath('scheme');
-    });
-
     it('should call Mustache.render', function() {
       chai.spy.on(Mustache, 'render');
 
-      new Parser(this.file).toSublime();
+      new ColorSchemeConverter(this.scheme).toSublime();
 
       expect(Mustache.render).to.have.been.called.once;
     });
