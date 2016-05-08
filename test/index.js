@@ -3,7 +3,6 @@ import fs from 'fs';
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
-import Mustache from 'mustache';
 import yaml from 'js-yaml';
 
 import ColorSchemeConverter from '../src';
@@ -70,16 +69,6 @@ describe('ColorSchemeConverter', function() {
       const settingsLength = 31;
 
       expect(this.result.settings.length).to.equal(settingsLength);
-    });
-  });
-
-  describe('#toSublime', function() {
-    it('should call Mustache.render', function() {
-      chai.spy.on(Mustache, 'render');
-
-      new ColorSchemeConverter(this.scheme).toSublime();
-
-      expect(Mustache.render).to.have.been.called.once;
     });
   });
 });

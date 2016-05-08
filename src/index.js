@@ -1,23 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-
 import _ from 'lodash';
-import yaml from 'js-yaml';
 import uuid from 'node-uuid';
-import Mustache from 'mustache';
 
 export default class ColorSchemeConverter {
   constructor(scheme) {
     this.scheme = scheme;
 
     return this;
-  }
-
-  toSublime() {
-    const template = this._loadTemplate(path.resolve(__dirname, '../templates/sublime.mustache'));
-    const context = this.toJSON();
-
-    return Mustache.render(template, context);
   }
 
   toJSON() {
@@ -67,15 +55,7 @@ export default class ColorSchemeConverter {
     };
   }
 
-  fromYAML(file) {
-    this._fromYaml = yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
-  }
-
   _makeName(scope) {
     return scope.split('.').map(_.upperFirst).join(' ');
-  }
-
-  _loadTemplate(template) {
-    return fs.readFileSync(template, 'utf-8');
   }
 }
