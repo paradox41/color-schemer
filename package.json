@@ -50,6 +50,7 @@
     "eslint-plugin-import": "^0.12.1",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.2",
+    "js-yaml": "^3.6.1",
     "mocha": "^2.4.5",
     "rimraf": "^2.5.0",
     "standard-version": "^2.3.0",
