@@ -4,13 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "files": [
-    "bin/",
     "dist/",
     "templates/"
   ],
-  "bin": {
-    "color-scheme-parser": "./bin/index.js"
-  },
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src test",
