@@ -1,5 +1,15 @@
 language: node_js
+sudo: required
+dist: trusty
 node_js:
   - stable
+  - '5'
+  - '5.1'
+  - '4'
+  - '4.2'
+  - '4.1'
+  - '4.0'
+script:
+  - npm run build
 after_script:
-  - 'npm run coveralls'
+  - npm run coveralls
