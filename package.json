@@ -12,7 +12,7 @@
     "lint": "eslint src test",
     "watch": "watch 'npm run build' src test",
     "prebuild": "npm run clean",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-core/register",
     "build": "babel --optional runtime src -d dist",
     "postbuild": "npm run test",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
