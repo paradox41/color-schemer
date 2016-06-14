@@ -11,21 +11,17 @@
     "clean": "rimraf dist",
     "lint": "eslint src test",
     "watch": "watch 'npm run build' src test",
-    "prebuild": "npm run clean -s",
+    "prebuild": "npm run clean",
     "test": "mocha --compilers js:babel-register",
     "build": "babel --optional runtime src -d dist",
     "postbuild": "npm run test -s",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
     "postcoveralls": "rimraf ./coverage",
-    "prepublish": "npm run build -s",
-    "deploy": "git pull --rebase origin master && git push origin master",
-    "patch": "npm version patch && npm publish",
-    "minor": "npm version minor && npm publish",
-    "major": "npm version major && npm publish",
-    "postpublish": "git push origin master --follow-tags",
-    "toc": "doctoc --github --title \"# Changelog\" CHANGELOG.md",
-    "docs": "documentation build ./src/index.js --format html --output ./docs"
+    "docs": "documentation build ./src/index.js --format html --output ./docs",
+    "prerelease": "npm run build && npm test",
+    "release": "standard-version && git push --follow-tags origin master",
+    "postrelease": "npm publish"
   },
   "repository": {
     "type": "git",
@@ -49,7 +45,6 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
     "coveralls": "^2.11.6",
-    "doctoc": "^0.15.0",
     "documentation": "^4.0.0-beta2",
     "eslint": "^1.10.3",
     "eslint-plugin-import": "^0.12.1",
@@ -57,6 +52,7 @@
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "rimraf": "^2.5.0",
+    "standard-version": "^2.3.0",
     "watch": "^0.17.1"
   },
   "dependencies": {
