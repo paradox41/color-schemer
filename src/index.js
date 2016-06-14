@@ -8,7 +8,7 @@ export default class ColorSchemeConverter {
     return this;
   }
 
-  toJSON() {
+  serialize() {
     const content = this.scheme;
 
     const themeName = _.get(content, 'name', '');

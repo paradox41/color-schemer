@@ -20,9 +20,9 @@ describe('ColorSchemeConverter', function() {
     this.scheme = yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
   });
 
-  describe('#toJSON', function() {
+  describe('#serialize', function() {
     before(function() {
-      this.result = new ColorSchemeConverter(this.scheme).toJSON();
+      this.result = new ColorSchemeConverter(this.scheme).serialize();
     });
 
     it('should set the name correctly', function() {
