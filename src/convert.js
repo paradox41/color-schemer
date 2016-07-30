@@ -5,11 +5,11 @@ import Mustache from 'mustache';
 
 import AtomThemeConverter from './atom-theme-converter';
 
-exports.command = 'convert <file>';
+export const command = 'convert <file>';
 
-exports.describe = 'Convert Atom color schemes to Sublime color schemes';
+export const describe = 'Convert Atom color schemes to Sublime color schemes';
 
-exports.builder = {
+export const builder = {
   outfile: {
     describe: 'Outfile. If not file is provided, output will be written to stdout',
     alias: 'o',
@@ -22,7 +22,7 @@ exports.builder = {
   }
 };
 
-exports.handler = function(argv) {
+export const handler = function(argv) {
   const { file, outfile, name } = argv;
 
   const templatePath = path.resolve(__dirname, '..', 'templates', 'sublime.mustache');
