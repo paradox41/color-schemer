@@ -15,7 +15,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "lint": "eslint src",
-    "prerelease": "npm run lint",
+    "prerelease": "npm run lint && npm run build",
     "release": "standard-version --sign && git push --follow-tags origin master",
     "postrelease": "npm publish"
   },
