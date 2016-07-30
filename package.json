@@ -1,6 +1,6 @@
 {
   "name": "color-schemer",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Convert Atom color schemes to Sublime color scheme",
   "main": "./cli.js",
   "bin": {
