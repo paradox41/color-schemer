@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const _ = require('lodash');
-const uuid = require('node-uuid');
-const less = require('less');
-const css = require('css');
-const tinycolor = require('tinycolor2');
+import _ from 'lodash';
+import uuid from 'node-uuid';
+import less from 'less';
+import css from 'css';
+import tinycolor from 'tinycolor2';
 
-module.exports = class AtomThemeConverter {
+export default class AtomThemeConverter {
   constructor(themeFile, name) {
     this.themeFile = path.resolve(themeFile);
     this.content = fs.readFileSync(this.themeFile, 'utf8');

@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const Mustache = require('mustache');
+import Mustache from 'mustache';
 
-const AtomThemeConverter = require('./atom-theme-converter');
+import AtomThemeConverter from './atom-theme-converter';
 
 exports.command = 'convert <file>';
 
@@ -11,10 +11,14 @@ exports.describe = 'Convert Atom color schemes to Sublime color schemes';
 
 exports.builder = {
   outfile: {
-    describe: 'Outfile'
+    describe: 'Outfile. If not file is provided, output will be written to stdout',
+    alias: 'o',
+    type: 'string'
   },
   name: {
-    describe: 'Name for the scheme. If no name is provided, the folder name will be used'
+    describe: 'Name for the scheme. If no name is provided, the folder name will be used',
+    alias: 'n',
+    type: 'string'
   }
 };
 

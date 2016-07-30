@@ -2,7 +2,7 @@
 const yargs = require('yargs');
 
 yargs
-  .command(require('./src/convert'))
+  .command(require('./lib/convert'))
   .version()
   .help()
   .argv;
