@@ -11,7 +11,7 @@
 ## Install
 
 ```sh
-npm i -S color-scheme-parser
+npm i -g color-scheme-parser
 ```
 
 ## Usage

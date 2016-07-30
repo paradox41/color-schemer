@@ -11,6 +11,7 @@
     "templates/",
     "./cli.js"
   ],
+  "preferGlobal": true,
   "scripts": {
     "build": "babel src --out-dir lib",
     "lint": "eslint src",
