@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import Mustache from 'mustache';
+import Handlebars from 'handlebars';
 
 import AtomThemeConverter from './atom-theme-converter';
 
@@ -25,12 +25,12 @@ export const builder = {
 export const handler = function(argv) {
   const { file, outfile, name } = argv;
 
-  const templatePath = path.resolve(__dirname, '..', 'templates', 'sublime.mustache');
-  const template = fs.readFileSync(templatePath, 'utf8');
+  const templatePath = path.resolve(__dirname, '..', 'templates', 'sublime.hbs');
+  const template = Handlebars.compile(fs.readFileSync(templatePath, 'utf8'));
   const converter = new AtomThemeConverter(file, name);
 
   return converter.getContext().then((context) => {
-    const result = Mustache.render(template, context);
+    const result = template(context);
 
     if (outfile) {
       fs.writeFileSync(outfile, result);

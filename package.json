@@ -34,9 +34,9 @@
   "dependencies": {
     "css": "^2.2.1",
     "first-mate": "^5.1.1",
+    "handlebars": "^4.0.5",
     "less": "^2.7.1",
     "lodash": "^4.13.1",
-    "mustache": "^2.2.1",
     "node-uuid": "^1.4.7",
     "tinycolor2": "^1.4.1",
     "yargs": "^4.7.1"

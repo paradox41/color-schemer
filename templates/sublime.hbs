@@ -23,7 +23,7 @@
                 <string>{{selection}}</string>
             </dict>
         </dict>
-        {{#settings}}
+        {{#each settings}}
         <dict>
             <key>name</key>
             <string>{{name}}</string>
@@ -37,7 +37,7 @@
                 <string>{{settings.fontStyle}}</string>
             </dict>
         </dict>
-        {{/settings}}
+        {{/each}}
     </array>
     <key>uuid</key>
     <string>{{uuid}}</string>
