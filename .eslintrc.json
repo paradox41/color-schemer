@@ -1,14 +1,15 @@
 {
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true,
     "node": true,
     "mocha": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "sourceType": "module"
   },
   "rules": {
     "indent": [
