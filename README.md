@@ -11,7 +11,7 @@
 ## Install
 
 ```sh
-npm i -g color-scheme-parser
+npm i -g color-schemer
 ```
 
 ## Usage
@@ -38,16 +38,16 @@ color-schemer convert path/to/index.less
 
 Apache-2.0 © [Will Soto](http://github.com/paradox41)
 
-[npm-url]: https://npmjs.org/package/color-scheme-parser
-[npm-image]: https://img.shields.io/npm/v/color-scheme-parser.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/color-schemer
+[npm-image]: https://img.shields.io/npm/v/color-schemer.svg?style=flat-square
 
-[travis-url]: https://travis-ci.org/paradox41/color-scheme-parser
-[travis-image]: https://img.shields.io/travis/paradox41/color-scheme-parser.svg?style=flat-square
+[travis-url]: https://travis-ci.org/paradox41/color-schemer
+[travis-image]: https://img.shields.io/travis/paradox41/color-schemer.svg?style=flat-square
 
-[coveralls-url]: https://coveralls.io/r/paradox41/color-scheme-parser
-[coveralls-image]: https://img.shields.io/coveralls/paradox41/color-scheme-parser.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/paradox41/color-schemer
+[coveralls-image]: https://img.shields.io/coveralls/paradox41/color-schemer.svg?style=flat-square
 
-[depstat-url]: https://david-dm.org/paradox41/color-scheme-parser
-[depstat-image]: https://david-dm.org/paradox41/color-scheme-parser.svg?style=flat-square
+[depstat-url]: https://david-dm.org/paradox41/color-schemer
+[depstat-image]: https://david-dm.org/paradox41/color-schemer.svg?style=flat-square
 
-[download-badge]: http://img.shields.io/npm/dm/color-scheme-parser.svg?style=flat-square
+[download-badge]: http://img.shields.io/npm/dm/color-schemer.svg?style=flat-square
