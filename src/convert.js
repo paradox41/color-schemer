@@ -21,7 +21,8 @@ exports.builder = {
 exports.handler = function(argv) {
   const { file, outfile, name } = argv;
 
-  const template = fs.readFileSync(path.resolve(__dirname, '..', 'templates', 'sublime.mustache'), 'utf8');
+  const templatePath = path.resolve(__dirname, '..', 'templates', 'sublime.mustache');
+  const template = fs.readFileSync(templatePath, 'utf8');
   const converter = new AtomThemeConverter(file, name);
 
   return converter.getContext().then((context) => {

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const _ = require('lodash');
+const uuid = require('node-uuid');
 const less = require('less');
 const css = require('css');
 const tinycolor = require('tinycolor2');
@@ -36,13 +37,13 @@ module.exports = class AtomThemeConverter {
       const scopesById = _(ast.stylesheet.rules).map((rule) => {
         return _.map(rule.selectors, (selector) => {
           return {
-            selector: selector.trim(),
+            selector: _(selector).split('.').last().trim(),
             declarations: _(rule.declarations).map((declaration) => {
               return _.omit(declaration, ['position', 'type']);
             }).keyBy('property').value()
           };
         });
-      }).flatten().keyBy('selector').value();
+      }).flatten().uniqBy('selector').keyBy('selector').value();
 
       resolve(scopesById);
     });
@@ -52,10 +53,10 @@ module.exports = class AtomThemeConverter {
     return new Promise((resolve, reject) => {
       const background = _.get(scopesById, "['atom-text-editor']['declarations']['background-color']['value']");
       const foreground = _.get(scopesById, "['atom-text-editor']['declarations']['color']['value']");
-      const caret = _.get(scopesById, "['atom-text-editor .cursor']['declarations']['color']['value']");
-      const invisibles = _.get(scopesById, "['atom-text-editor .wrap-guide']['declarations']['background-color']['value']");
-      const lineHighlight = _.get(scopesById, "['.cursor-line']['declarations']['background-color']['value']");
-      const selection = _.get(scopesById, "['atom-text-editor .selection .region']['declarations']['background-color']['value']");
+      const caret = _.get(scopesById, "['cursor']['declarations']['color']['value']");
+      const invisibles = _.get(scopesById, "['wrap-guide']['declarations']['background-color']['value']");
+      const lineHighlight = _.get(scopesById, "['cursor-line']['declarations']['background-color']['value']");
+      const selection = _.get(scopesById, "['region']['declarations']['background-color']['value']");
 
       const hasRequiredValues = _.every([
         background,
@@ -67,12 +68,12 @@ module.exports = class AtomThemeConverter {
       ]);
 
       if (!hasRequiredValues) {
-        console.error('background: ', background);
-        console.error('foreground: ', foreground);
-        console.error('caret: ', caret);
-        console.error('invisibles: ', invisibles);
-        console.error('lineHighlight: ', lineHighlight);
-        console.error('selection: ', selection);
+        console.error('background:', background);
+        console.error('foreground:', foreground);
+        console.error('caret:', caret);
+        console.error('invisibles:', invisibles);
+        console.error('lineHighlight:', lineHighlight);
+        console.error('selection:', selection);
 
         reject('Not all required values are present. Please check the theme');
       }
@@ -85,26 +86,8 @@ module.exports = class AtomThemeConverter {
         caret: tinycolor(caret).toHexString(),
         lineHighlight: tinycolor(lineHighlight).toHexString(),
         selection: tinycolor(selection).toHexString(),
-        settings: _.map(scopesById, (val, key) => {
-          const declarationsByProp = _.keyBy(val.declarations, 'property');
-          const fontStyle = _.compact([
-            _.get(declarationsByProp['font-style'], 'value'),
-            _.get(declarationsByProp['font-weight'], 'value'),
-            _.get(declarationsByProp['text-decoration'], 'value')
-          ]);
-          const foreground = _.get(declarationsByProp['color'], 'value');
-          const background = _.get(declarationsByProp['background-color'], 'value');
-
-          return {
-            name: key,
-            scope: _.trimStart(key, '.'),
-            settings: {
-              foreground: foreground ? tinycolor(foreground).toHexString() : undefined,
-              background: background ? tinycolor(background).toHexString() : undefined,
-              fontStyle: fontStyle.length > 0 ? fontStyle.join(' ').trim() : undefined
-            }
-          };
-        })
+        settings: this._getSettings(scopesById),
+        uuid: uuid.v4()
       };
 
       resolve(tmTheme);
@@ -119,5 +102,28 @@ module.exports = class AtomThemeConverter {
       .then((scopesById) => {
         return this.getTmTheme(scopesById);
       });
+  }
+
+  _getSettings(scopesById) {
+    return _.map(scopesById, (val, key) => {
+      const declarationsByProp = _.keyBy(val.declarations, 'property');
+      const fontStyle = _.compact([
+        _.get(declarationsByProp['font-style'], 'value'),
+        _.get(declarationsByProp['font-weight'], 'value'),
+        _.get(declarationsByProp['text-decoration'], 'value')
+      ]);
+      const foreground = _.get(declarationsByProp['color'], 'value');
+      const background = _.get(declarationsByProp['background-color'], 'value');
+
+      return {
+        name: key,
+        scope: _.trimStart(key, '.'),
+        settings: {
+          foreground: foreground ? tinycolor(foreground).toHexString() : undefined,
+          background: background ? tinycolor(background).toHexString() : undefined,
+          fontStyle: fontStyle.length > 0 ? fontStyle.join(' ').trim() : undefined
+        }
+      };
+    });
   }
 };
