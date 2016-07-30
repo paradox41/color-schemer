@@ -1,4 +1,4 @@
-# color-scheme-parser
+# Color Schemer
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
@@ -6,17 +6,33 @@
 [![Dependency Status][depstat-image]][depstat-url]
 [![Downloads][download-badge]][npm-url]
 
-> 
+> Convert Atom syntax themes to Sublime syntax themes
 
 ## Install
 
 ```sh
-npm i -D color-scheme-parser
+npm i -S color-scheme-parser
 ```
 
 ## Usage
 
-> TODO
+```
+color-schemer convert <file>
+
+Options:
+  --version      Show version number                                   [boolean]
+  --help         Show help                                             [boolean]
+  --outfile, -o  Outfile. If not file is provided, output will be written to
+                 stdout                                                 [string]
+  --name, -n     Name for the scheme. If no name is provided, the folder name
+                 will be used                                           [string]
+```
+
+## Example
+
+```sh
+color-schemer convert path/to/index.less
+```
 
 ## License
 
